@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ blog_type.type_name }}</title>
+</head>
+<body>
+  <div>
+    <h2>个人博客网站</h2>
+  </div>
+  <hr/>
+  <h3>{{ blog_type.type_name }}</h3>
+  {% for blog in blogs%}
+    <a href="{% url 'blog_detail' blog.pk %}"><h3>{{ blog.title }}</h3></a> 
+    <p>作者：{{ blog.author }}</p>
+    <p>发表日期：{{ blog.created_time|date:"Y-m-d G:m:s" }}</p> 
+    <!-- Y-m-d h:m:s>>2020-02-08 02:02:17 12小时进制-->
+    <!-- Y-m-d G:m:s>>2020-02-08 15:02:17 24小时进制-->
+    <p>分类：
+      <a href="{% url 'blogs_with_type' blog.blog_type.pk %}">
+        {{ blog.blog_type }}
+      </a>
+    </p>
+    <p>{{ blog.content|truncatechars:30 }}</p>
+
+    {% empty %}
+      <p>-----暂无博客，敬请期待-----</p>
+  {% endfor %}
+
+  <p>一共有{{ blogs|length }}篇博客</p>
+</body>
+</html>

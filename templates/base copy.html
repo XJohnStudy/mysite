@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link rel="stylesheet" href="/static/css/base.css"> -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+  <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
+  <title>{% block title %}{% endblock %}</title>
+  {% block header_extends %}{% endblock %}
+</head>
+<body>
+  <div class="nav">
+    <a href="{% url 'home' %}" class="logo">
+      <h2>个人博客网站</h2>
+    </a>
+    <a href="/">首页</a>
+    <a href="{% url 'blog_list' %}">博客列表</a>
+  </div>
+  {% block content %}{% endblock %}
+</body>
+</html>

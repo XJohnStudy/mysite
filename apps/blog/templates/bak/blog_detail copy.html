@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>blog_detail</title>
+</head>
+<body>
+  <div>
+    <!-- <h2 href="/"><h2>个人博客网站</h2></a> -->
+    <a href="{% url 'home' %}"><h2>个人博客网站</h2></a>
+  </div>
+  <h3>{{ blog.title }}</h3>
+  <p>作者：{{ blog.author }}</p>
+  <p>发表日期：{{ blog.created_time|date:"Y-m-d G:m:s" }}</p> 
+  <p>分类：
+    <a href="{% url 'blogs_with_type' blog.blog_type.pk %}">
+      {{ blog.blog_type }}
+    </a>
+  </p>
+  <p>{{ blog.content }}</p>
+</body>
+</html>
