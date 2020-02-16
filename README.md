@@ -1,0 +1,2 @@
+# mysite
+django mysite test
